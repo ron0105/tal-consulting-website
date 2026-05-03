@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -16,30 +16,34 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-indigo: var(--accent-indigo);
 
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
   
   --radius-card: 4px;
-  --radius-btn: 0px;
+  --radius-btn: 6px;
 }
 
 @layer base {
   :root {
-    /* Light Theme — Editorial, High-Contrast */
+    /* Light Theme — Clean, Minimal */
     --bg: #FFFFFF;
     --bg-secondary: #F9FAFB;
     --bg-lift: #F3F4F6;
     
     --border-color: #E5E7EB;
-    --border-subtle: #E5E7EB;
+    --border-subtle: #F3F4F6;
 
     --text-primary: #000000;
     --text-body: #1A1A1A;
-    --text-muted: #4B5563;
+    --text-muted: #6B7280;
 
-    /* Monochrome — no blue accent */
-    --accent: #000000;
-    --accent-hover: #1a1a1a;
-    --accent-indigo: #000000;
+    /* Blue Accent — Trust, Competence */
+    --accent: #002960;
+    --accent-hover: #001E47;
+    --accent-indigo: #002960;
+
+    /* Navbar background */
+    --navbar-bg: rgba(255, 255, 255, 0.90);
   }
 
   .dark {
@@ -55,10 +59,13 @@
     --text-body: #E8E8E8;
     --text-muted: #9CA3AF;
 
-    /* Monochrome — no blue accent */
+    /* Monochrome — white accent on dark */
     --accent: #FFFFFF;
     --accent-hover: #E5E7EB;
     --accent-indigo: #FFFFFF;
+
+    /* Navbar background */
+    --navbar-bg: rgba(10, 10, 10, 0.90);
   }
 }
 
@@ -68,6 +75,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 17px;
 }
 
 body {
@@ -79,6 +87,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Marquee ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 ::selection {
@@ -165,40 +187,43 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 28px;
-  background: var(--text-primary);
-  color: var(--bg);
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #FFFFFF;
   font-size: 0.875rem;
-  font-weight: 700;
-  border-radius: 0px;
-  border: 1px solid var(--text-primary);
+  font-weight: 600;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--accent);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   letter-spacing: 0.01em;
 }
-.btn-primary:hover { 
+.btn-primary:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0, 41, 96, 0.4);
 }
 .btn-primary:active {
-  transform: scale(0.99);
+  transform: translateY(0px) scale(0.98);
+  box-shadow: none;
 }
 .btn-primary svg {
-  transition: transform 0.15s ease;
+  transition: transform 0.2s ease;
 }
 .btn-primary:hover svg {
   transform: translateX(3px);
 }
 
 .dark .btn-primary {
-  background: #FFFFFF;
+  background: var(--accent);
   color: #000000;
-  border-color: #FFFFFF;
+  border-color: var(--accent);
 }
 .dark .btn-primary:hover {
-  background: #E5E7EB;
-  border-color: #E5E7EB;
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
   color: #000000;
 }
 
@@ -220,7 +245,8 @@ body {
   letter-spacing: 0.01em;
 }
 .btn-ghost:hover {
-  border-color: var(--text-primary);
+  border-color: var(--accent);
+  color: var(--accent);
   background: transparent;
 }
 .btn-ghost:active {
@@ -231,6 +257,19 @@ body {
 }
 .btn-ghost:hover svg {
   transform: translateX(3px);
+}
+
+/* ─── Interactive cards ─── */
+.card-interactive {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent) !important;
+}
+.dark .card-interactive:hover {
+  box-shadow: 0 16px 40px -12px rgba(255, 255, 255, 0.08);
 }
 
 /* ─── Layout Utilities ─── */

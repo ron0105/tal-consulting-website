@@ -16,7 +16,7 @@ const steps = [
     n: "02",
     title: "Blueprint",
     duration: "Week 1–2",
-    body: "We design the full infrastructure map — what to build, in what order, and why. No surprises.",
+    body: "We design the full infrastructure map: what to build, in what order, and why. No surprises.",
     output: "Full infrastructure blueprint",
   },
   {
@@ -53,7 +53,7 @@ export default function TALVIProcess() {
           {/* Left — sticky header */}
           <div className="md:sticky md:top-24">
             <AnimateOnScroll>
-              <span className="label-eyebrow block mb-6">03 — How We Work</span>
+              <span className="label-eyebrow block mb-6">03: How We Work</span>
               <h2 className="text-section-title text-foreground mb-6">
                 Five phases.
                 <br />

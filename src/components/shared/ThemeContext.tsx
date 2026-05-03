@@ -15,8 +15,10 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("system");
   const [resolvedTheme, setResolvedTheme] = useState<"dark" | "light">("light");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const savedTheme = localStorage.getItem("theme") as Theme | null;
     if (savedTheme) {
       setThemeState(savedTheme);
@@ -24,6 +26,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     const resolveTheme = (t: Theme) => {
@@ -39,6 +43,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const currentResolved = resolveTheme(t);
       root.classList.add(currentResolved);
       setResolvedTheme(currentResolved);
+      
       if (t !== "system") {
         localStorage.setItem("theme", t);
       } else {
@@ -56,7 +61,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     mediaQuery.addEventListener("change", listener);
     return () => mediaQuery.removeEventListener("change", listener);
-  }, [theme]);
+  }, [theme, mounted]);
+
+  // Prevent hydration mismatch by rendering a fragment until mounted
+  // Alternatively, just render everything but don't apply theme logic until mounted
+  // We choose to render everything to keep SEO benefits, as Next.js handles suppressHydrationWarning
   
   return (
     <ThemeContext.Provider value={{ theme, setTheme: setThemeState, resolvedTheme }}>

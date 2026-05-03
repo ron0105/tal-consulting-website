@@ -3,52 +3,49 @@
 import Link from "next/link";
 
 const pages = [
-  { label: "Venture Lab", href: "/venture-lab" },
-  { label: "TAL VI", href: "/tal-vi" },
-  { label: "Venture Lab Process", href: "/how-it-works" },
-  { label: "Work With Us", href: "/work-with-us" },
+  { label: "For Businesses", href: "/for-businesses" },
+  { label: "For New Ideas", href: "/for-new-ideas" },
+  { label: "How We Work", href: "/how-we-work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer
-      className="px-6 md:px-10 py-14"
+      className="px-6 md:px-10 py-20 bg-background"
       style={{ borderTop: "1px solid var(--border-subtle)" }}
     >
       <div className="layout-grid">
-        <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-16">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2.5 mb-4 cursor-pointer w-fit">
-              <div
-                className="w-5 h-5 flex items-center justify-center"
-                style={{ border: "1.5px solid var(--text-primary)", borderRadius: "0px" }}
-              >
-                <div
-                  style={{ width: "8px", height: "8px", background: "var(--text-primary)", borderRadius: "0px" }}
-                />
-              </div>
-              <span className="text-sm font-bold tracking-tight text-foreground">
-                The Adda Labs
+            <Link href="/" className="flex items-center gap-3 mb-6 cursor-pointer w-fit group">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <rect x="1.5" y="1.5" width="25" height="25" rx="6" stroke="var(--accent)" strokeWidth="2.5"/>
+                <rect x="8" y="8" width="12" height="12" rx="3" fill="var(--accent)"/>
+              </svg>
+              <span className="text-lg font-bold tracking-tight text-foreground font-poppins">
+                TAL Consulting
               </span>
             </Link>
-            <p className="text-sm leading-relaxed font-bold tracking-tight" style={{ color: "var(--text-muted)", maxWidth: "260px" }}>
-              A deterministic decision engine for early-stage ventures. We extract signal to dictate exactly what gets built next.
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)", maxWidth: "280px" }}>
+              We help businesses run better and grow smoothly. We set up simple systems so you can focus on growth.
             </p>
           </div>
 
           {/* Index */}
           <div>
-            <p className="text-[10px] font-black uppercase tracking-widest mb-5" style={{ color: "var(--text-muted)" }}>
-              [ INDEX ]
+            <p className="text-[10px] font-black uppercase tracking-widest mb-6" style={{ color: "var(--text-muted)" }}>
+              Navigation
             </p>
-            <nav className="flex flex-col gap-3">
+            <nav className="flex flex-col gap-4">
               {pages.map((p) => (
                 <Link
                   key={p.label}
                   href={p.href}
-                  className="text-sm font-bold uppercase tracking-tight transition-colors duration-200 cursor-pointer hover:text-foreground"
+                  className="text-sm font-medium tracking-tight transition-colors duration-200 cursor-pointer hover:text-accent"
                   style={{ color: "var(--text-body)" }}
                 >
                   {p.label}
@@ -57,33 +54,34 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Access */}
+          {/* Contact */}
           <div>
-            <p className="text-[10px] font-black uppercase tracking-widest mb-5" style={{ color: "var(--text-muted)" }}>
-              [ ACCESS ]
+            <p className="text-[10px] font-black uppercase tracking-widest mb-6" style={{ color: "var(--text-muted)" }}>
+              Get in touch
             </p>
-            <a href="mailto:founder@theaddalabs.com" className="text-sm font-bold uppercase tracking-tight mb-2 block hover:text-foreground transition-colors" style={{ color: "var(--text-body)" }}>founder@theaddalabs.com</a>
-            <p className="text-sm font-bold uppercase tracking-tight mb-6" style={{ color: "var(--text-muted)" }}>Mumbai, IN</p>
+            <a href="mailto:founder@theaddalabs.com" className="text-sm font-semibold tracking-tight mb-2 block hover:text-accent transition-colors" style={{ color: "var(--text-body)" }}>founder@theaddalabs.com</a>
+            <p className="text-sm font-medium tracking-tight mb-8" style={{ color: "var(--text-muted)" }}>Mumbai · Global</p>
             <Link
-              href="/work-with-us"
-              className="btn-primary uppercase tracking-widest font-black"
-              style={{ padding: "12px 24px", fontSize: "0.75rem" }}
+              href="/contact"
+              className="btn-primary"
             >
-              Start the conversation
+              Start a Conversation
             </Link>
           </div>
         </div>
 
         <div
-          className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pt-8"
+          className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-8"
           style={{ borderTop: "1px solid var(--border-subtle)" }}
         >
-          <p className="text-xs font-mono uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
-            &copy; {year} The Adda Labs // System Active
+          <p className="text-xs font-medium uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
+            &copy; {year} TAL Consulting / The Adda Labs
           </p>
-          <p className="text-xs font-black uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
-            EVIDENCE &gt; ASSUMPTIONS
-          </p>
+          <div className="flex gap-6">
+            <p className="text-xs font-semibold" style={{ color: "var(--text-muted)" }}>
+              India + International
+            </p>
+          </div>
         </div>
       </div>
     </footer>

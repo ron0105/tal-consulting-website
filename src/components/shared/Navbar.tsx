@@ -9,10 +9,11 @@ import { usePathname } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { label: "Venture Lab", href: "/venture-lab" },
-  { label: "Venture Lab Process", href: "/how-it-works" },
-  { label: "TAL VI", href: "/tal-vi" },
-  { label: "Work With Us", href: "/work-with-us" },
+  { label: "For Businesses", href: "/for-businesses" },
+  { label: "For New Ideas", href: "/for-new-ideas" },
+  { label: "How We Work", href: "/how-we-work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -21,7 +22,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -36,35 +37,25 @@ export default function Navbar() {
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: EASE }}
-        className="fixed top-0 left-0 right-0 z-50 h-16 w-full"
+        className="fixed top-0 left-0 right-0 z-50 h-20 w-full"
         style={{
-          backdropFilter: scrolled ? "blur(16px)" : "none",
-          background: scrolled ? "color-mix(in srgb, var(--bg) 95%, transparent)" : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          background: scrolled ? "var(--navbar-bg)" : "transparent",
           borderBottom: scrolled ? "1px solid var(--border-subtle)" : "1px solid transparent",
-          transition: "background 0.3s, border-color 0.3s, backdrop-filter 0.3s",
+          transition: "all 0.3s ease",
         }}
       >
         <div className="layout-grid flex items-center justify-between h-full px-6 md:px-10">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 cursor-pointer flex-shrink-0 group">
-            <div
-              className="w-5 h-5 flex items-center justify-center"
-              style={{
-                border: "1.5px solid var(--text-primary)",
-                borderRadius: "0px",
-              }}
-            >
-              <div
-                style={{
-                  width: "9px",
-                  height: "9px",
-                  background: "var(--text-primary)",
-                  borderRadius: "0px",
-                }}
-              />
-            </div>
-            <span className="text-sm font-bold tracking-tight text-foreground">
-              The Adda Labs
+          <Link href="/" className="flex items-center gap-3 cursor-pointer flex-shrink-0 group">
+            {/* Logo mark — solid fill with inner white mark */}
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <rect width="30" height="30" rx="7" style={{ fill: "var(--accent)" }}/>
+              <rect x="5" y="5" width="20" height="20" rx="4.5" stroke="white" strokeWidth="1.2" strokeOpacity="0.3" fill="none"/>
+              <rect x="10" y="10" width="10" height="10" rx="2.5" fill="white"/>
+            </svg>
+            <span className="text-lg font-bold tracking-tight text-foreground font-poppins">
+              TAL Consulting
             </span>
           </Link>
 
@@ -76,15 +67,15 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-xs font-semibold tracking-wider transition-colors duration-200 cursor-pointer relative hover:text-foreground"
-                  style={{ color: active ? "var(--text-primary)" : "var(--text-muted)" }}
+                  className="text-sm font-medium transition-colors duration-200 cursor-pointer relative hover:text-accent"
+                  style={{ color: active ? "var(--accent)" : "var(--text-muted)" }}
                 >
                   {link.label}
                   {active && (
                     <motion.div
                       layoutId="nav-indicator"
                       className="absolute -bottom-1.5 left-0 right-0 h-[1.5px]"
-                      style={{ background: "var(--text-primary)" }}
+                      style={{ background: "var(--accent)" }}
                     />
                   )}
                 </Link>
@@ -95,11 +86,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             <Link
-              href="/work-with-us"
+              href="/contact"
               className="btn-primary"
-              style={{ padding: "8px 20px", fontSize: "0.8rem" }}
+              style={{ padding: "10px 20px", fontSize: "0.875rem" }}
             >
-              Start the conversation
+              Start a Conversation
             </Link>
           </div>
 
@@ -142,9 +133,9 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: EASE }}
-            className="fixed inset-x-0 top-16 z-40 md:hidden flex flex-col px-6 py-6 gap-1"
+            className="fixed inset-x-0 top-16 z-40 md:hidden flex flex-col px-6 py-8 gap-1"
             style={{
-              background: "var(--bg)",
+              background: "var(--navbar-bg)",
               backdropFilter: "blur(20px)",
               borderBottom: "1px solid var(--border-subtle)",
             }}
@@ -158,24 +149,24 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className="flex items-center justify-between py-4 text-base font-semibold cursor-pointer border-b border-border-subtle transition-colors hover:text-foreground"
-                  style={{ color: pathname === link.href ? "var(--text-primary)" : "var(--text-muted)" }}
+                  className="flex items-center justify-between py-4 text-base font-semibold cursor-pointer border-b border-border-subtle transition-colors hover:text-accent"
+                  style={{ color: pathname === link.href ? "var(--accent)" : "var(--text-muted)" }}
                 >
                   {link.label}
                   {pathname === link.href && (
                     <div
                       className="w-1.5 h-1.5 flex-shrink-0"
-                      style={{ background: "var(--text-primary)" }}
+                      style={{ background: "var(--accent)" }}
                     />
                   )}
                 </Link>
               </motion.div>
             ))}
             <Link
-              href="/work-with-us"
+              href="/contact"
               className="btn-primary flex items-center justify-center mt-6"
             >
-              Start the conversation
+              Start a Conversation
             </Link>
           </motion.div>
         )}

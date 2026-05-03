@@ -8,17 +8,17 @@ const outcomes = [
   {
     label: "Build.",
     description: "Idea validated. Customers confirmed the problem. Economics work. You know what to build and for whom.",
-    gets: "A build brief — scope, customer profile, pricing, and 90-day roadmap.",
+    gets: "A build brief: scope, customer profile, pricing, and 90-day roadmap.",
   },
   {
     label: "Pivot.",
     description: "The core idea has signal, but something is off. We tell you what changed and what to test next.",
-    gets: "A pivot brief — new direction, what to retest, and a new sprint plan.",
+    gets: "A pivot brief: new direction, what to retest, and a new sprint plan.",
   },
   {
     label: "Kill.",
     description: "Evidence doesn't support building this. A clean stop saves months and capital.",
-    gets: "A kill memo — why, what we learned, and what is worth keeping.",
+    gets: "A kill memo: why, what we learned, and what is worth keeping.",
   },
 ];
 
@@ -36,7 +36,7 @@ export default function HIWDecisionGate() {
 
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start mb-[clamp(5rem,10vh,8rem)]">
           <AnimateOnScroll className="flex-1">
-            <p className="label-eyebrow mb-8">Stage 6 — Decision Gate</p>
+            <p className="label-eyebrow mb-8">Stage 6: Decision Gate</p>
             <h2
               style={{
                 fontSize: "clamp(2.5rem, 6vw, 5rem)",
@@ -60,7 +60,7 @@ export default function HIWDecisionGate() {
                 maxWidth: "560px",
               }}
             >
-              Decision criteria are defined before the sprint starts — not invented at the end.
+              Decision criteria are defined before the sprint starts, not invented at the end.
               Three outcomes are possible. All are valid.
             </p>
           </AnimateOnScroll>

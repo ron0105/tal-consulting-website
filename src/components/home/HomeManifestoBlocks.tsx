@@ -1,67 +1,84 @@
 "use client";
 
 import { AnimateOnScroll } from "../shared/AnimateOnScroll";
-import { UnstructuredEffortVisual, AlignedGrowthVisual } from "@/components/visuals";
+
+const plans = [
+  {
+    type: "One-time setup",
+    price: "₹25,000 – ₹1,00,000",
+    description:
+      "We come in, identify the gaps, and set up the systems. One clear project with a defined scope and a clear end point.",
+    tags: ["Team structure", "Process design", "Communication clarity"],
+  },
+  {
+    type: "Ongoing support",
+    price: "₹15,000 – ₹50,000 / month",
+    description:
+      "We work with you month to month, refining systems, tracking what works, and adjusting as your business grows.",
+    tags: ["Monthly check-ins", "System refinement", "Growth support"],
+    highlight: true,
+  },
+  {
+    type: "International clients",
+    price: "Pricing on request",
+    description:
+      "We work with businesses globally. Pricing is shared after a brief conversation to understand your business and what you need.",
+    tags: ["USD / GBP / EUR", "Tailored scope", "Remote-first"],
+  },
+];
 
 export default function HomeManifestoBlocks() {
   return (
-    <section id="manifesto" className="padding-section bg-bg-secondary border-t border-border-subtle">
+    <section id="pricing" className="padding-section bg-background border-t border-border-subtle">
       <div className="layout-grid">
-        <AnimateOnScroll>
-          <span className="label-eyebrow mb-12 block">Stance</span>
-          <h2 className="text-section-title mb-24">
-            Evidence over guesswork.
+        <AnimateOnScroll className="mb-16">
+          <span className="label-eyebrow mb-8 block">Pricing</span>
+          <h2 className="text-section-title">
+            Simple, clear pricing.
+            <br />
+            <span className="text-muted">No surprises.</span>
           </h2>
         </AnimateOnScroll>
 
-        <div className="grid md:grid-cols-2 gap-px bg-border-subtle border border-border-subtle">
-          {/* WE REJECT */}
-          <div className="bg-background p-10 md:p-16">
-            <AnimateOnScroll>
-              <h3 className="text-xl font-black mb-12 text-muted uppercase tracking-widest">[ WHAT WE AVOID ]</h3>
-              <ul className="flex flex-col gap-10 mb-16">
-                {[
-                  "Building before you know it works",
-                  "Excitement mistaken for demand",
-                  "Moving fast without moving smart",
-                ].map((item, i) => (
-                  <li key={i} className="flex flex-col gap-2">
-                    <span className="text-3xl md:text-4xl font-black tracking-tight leading-none uppercase">
-                      {item}
+        <div className="grid md:grid-cols-3 gap-px bg-border-subtle border border-border-subtle">
+          {plans.map((plan, i) => (
+            <AnimateOnScroll key={plan.type} delay={i * 0.08}>
+              <div
+                className="h-full flex flex-col gap-6 p-8 md:p-10"
+                style={{ background: plan.highlight ? "var(--bg-secondary)" : "var(--bg)" }}
+              >
+                <span className="label-eyebrow">{plan.type}</span>
+                <p
+                  style={{
+                    fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
+                    fontWeight: 900,
+                    letterSpacing: "-0.02em",
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  {plan.price}
+                </p>
+                <p className="text-base leading-relaxed flex-1" style={{ color: "var(--text-body)" }}>
+                  {plan.description}
+                </p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {plan.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs font-bold px-3 py-1.5"
+                      style={{
+                        background: "var(--bg-lift)",
+                        color: "var(--text-muted)",
+                        border: "1px solid var(--border-subtle)",
+                      }}
+                    >
+                      {tag}
                     </span>
-                    <div className="w-full h-1 bg-bg-lift" />
-                  </li>
-                ))}
-              </ul>
-              <div className="w-full h-48 bg-bg-secondary border border-border-subtle p-6 flex flex-col justify-center items-center text-center">
-                <UnstructuredEffortVisual />
+                  ))}
+                </div>
               </div>
             </AnimateOnScroll>
-          </div>
-
-          {/* WE BELIEVE */}
-          <div className="bg-background p-10 md:p-16 flex flex-col justify-between">
-            <AnimateOnScroll delay={0.15}>
-              <h3 className="text-xl font-black mb-12 text-text-primary uppercase tracking-widest">[ OUR STANCE ]</h3>
-              <ul className="flex flex-col gap-10 mb-16">
-                {[
-                  "Real data beats best guesses",
-                  "The right foundation beats rushing",
-                  "Know it works, then grow it big",
-                ].map((item, i) => (
-                  <li key={i} className="flex flex-col gap-2">
-                    <span className="text-3xl md:text-4xl font-black tracking-tight leading-none uppercase italic italic-accent">
-                      {item}
-                    </span>
-                    <div className="w-full h-1 bg-text-primary" />
-                  </li>
-                ))}
-              </ul>
-              <div className="w-full h-48 bg-bg-lift/20 border border-border-subtle p-6 flex flex-col justify-center items-center text-center">
-                <AlignedGrowthVisual />
-              </div>
-            </AnimateOnScroll>
-          </div>
+          ))}
         </div>
       </div>
     </section>

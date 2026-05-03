@@ -3,7 +3,6 @@
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 
-// Typed cubic-bezier tuple — avoids `number[]` TypeScript incompatibility with Framer Motion's `Easing` type
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 interface AnimateOnScrollProps {
@@ -11,7 +10,7 @@ interface AnimateOnScrollProps {
   delay?: number;
   className?: string;
   direction?: "up" | "left" | "right" | "none";
-  variant?: "fade" | "blur";
+  variant?: "fade" | "blur" | "rise";
 }
 
 export function AnimateOnScroll({
@@ -22,21 +21,28 @@ export function AnimateOnScroll({
   variant = "fade",
 }: AnimateOnScrollProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const yOffset = variant === "rise" ? 48 : direction === "up" ? 28 : 0;
 
   const initial = {
     opacity: 0,
-    filter: variant === "blur" ? "blur(10px)" : "blur(0px)",
-    y: direction === "up" ? 20 : 0,
-    x: direction === "left" ? -20 : direction === "right" ? 20 : 0,
+    filter: variant === "blur" ? "blur(12px)" : "blur(0px)",
+    y: yOffset,
+    x: direction === "left" ? -28 : direction === "right" ? 28 : 0,
+    scale: variant === "rise" ? 0.97 : 1,
   };
+
+  const animate = inView
+    ? { opacity: 1, y: 0, x: 0, filter: "blur(0px)", scale: 1 }
+    : initial;
 
   return (
     <motion.div
       ref={ref}
       initial={initial}
-      animate={inView ? { opacity: 1, y: 0, x: 0, filter: "blur(0px)" } : initial}
-      transition={{ duration: 0.8, delay, ease: EASE }}
+      animate={animate}
+      transition={{ duration: 0.75, delay, ease: EASE }}
       className={className}
     >
       {children}
@@ -48,7 +54,7 @@ export function StaggerContainer({
   children,
   delay = 0,
   className = "",
-  stagger = 0.1,
+  stagger = 0.09,
 }: {
   children: React.ReactNode;
   delay?: number;
@@ -56,7 +62,7 @@ export function StaggerContainer({
   stagger?: number;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const variants: Variants = {
     hidden: { opacity: 0 },
@@ -83,8 +89,8 @@ export function StaggerContainer({
 }
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
 };
 
 export const blurItem: Variants = {
@@ -101,7 +107,7 @@ export function AnimatedLine({ delay = 0, className = "" }: { delay?: number; cl
       <motion.div
         initial={{ scaleX: 0 }}
         animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
-        transition={{ duration: 1.2, delay, ease: EASE }}
+        transition={{ duration: 1.4, delay, ease: EASE }}
         style={{ originX: 0 }}
         className="h-px w-full bg-border-subtle"
       />

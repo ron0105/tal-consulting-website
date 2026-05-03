@@ -1,124 +1,139 @@
 "use client";
 
-import Link from "next/link";
-import { AnimateOnScroll, AnimatedLine } from "@/components/shared/AnimateOnScroll";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const steps = [
   {
     n: "01",
-    title: "You bring the idea.",
-    body: "No pitch deck. No business plan needed. Just tell us the problem you want to solve, including what you're still figuring out. That\'s exactly where we start.",
+    title: "Understand your situation",
+    body: "We spend time with you, your team, and your goals. Nothing is assumed. Everything is heard.",
   },
   {
     n: "02",
-    title: "We do the research.",
-    body: "We use our 6-stage process: real customer conversations, demand testing, market signal analysis. All to give you a clear picture of where your idea stands.",
+    title: "Map what needs to change",
+    body: "We identify exactly what to build, strengthen, or simplify, and in what order.",
   },
   {
     n: "03",
-    title: "You get a clear path forward.",
-    body: "Build with confidence. Refine the approach. Or redirect your energy to something with a stronger signal. That alone saves months of time and real capital in the process.",
+    title: "Build the right systems",
+    body: "Clear, practical processes your team can follow. No complexity. Just what works.",
+  },
+  {
+    n: "04",
+    title: "Embed them with your team",
+    body: "We stay involved until the systems are running well and your team feels confident.",
   },
 ];
 
 export default function HomeProcess() {
-  return (
-    <section
-      style={{
-        paddingTop: "clamp(5rem, 10vh, 8rem)",
-        paddingBottom: "clamp(5rem, 10vh, 8rem)",
-        background: "var(--bg)",
-      }}
-    >
-      <AnimatedLine />
-      <div className="layout-grid px-6 md:px-10 mt-20">
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
-        <AnimateOnScroll>
-          <p className="label-eyebrow mb-8">How it works</p>
+  return (
+    <section className="bg-background py-24 md:py-32 border-t border-border-subtle">
+      <div className="layout-grid px-6 md:px-10">
+
+        {/* Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease }}
+          className="mb-20"
+        >
+          <span className="label-eyebrow mb-6 block text-accent">How We Work</span>
           <h2
+            className="font-poppins"
             style={{
-              fontSize: "clamp(2.5rem, 6vw, 5rem)",
-              fontWeight: 900,
-              letterSpacing: "-0.035em",
-              lineHeight: 1.0,
+              fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+              fontWeight: 800,
+              letterSpacing: "-0.04em",
+              lineHeight: 1.1,
               color: "var(--text-primary)",
-              marginBottom: "clamp(3.5rem, 7vh, 6rem)",
             }}
           >
-            Three steps.
-            <br />
-            <span style={{ color: "var(--text-muted)" }}>One confident decision.</span>
+            A clear process. Lasting results.
           </h2>
-        </AnimateOnScroll>
+        </motion.div>
 
-        {/* Steps — full width, no side-by-side */}
-        <div>
+        {/* Steps — large number + text layout */}
+        <div className="grid md:grid-cols-4 gap-0 relative">
+
+          {/* Connecting line — desktop */}
+          <motion.div
+            className="hidden md:block absolute h-px"
+            style={{
+              top: "2.25rem",
+              left: "8%",
+              right: "8%",
+              background: "var(--border-subtle)",
+              transformOrigin: "left",
+            }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={inView ? { scaleX: 1, opacity: 1 } : {}}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            aria-hidden="true"
+          />
+
           {steps.map((step, i) => (
-            <AnimateOnScroll key={step.n} delay={0.1 * i}>
+            <motion.div
+              key={step.n}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.65, ease, delay: 0.2 + i * 0.12 }}
+              className="relative z-10 flex flex-col items-start md:items-center text-left md:text-center px-0 md:px-4 mb-12 md:mb-0"
+            >
+              {/* Step circle */}
               <div
+                className="w-[4.5rem] h-[4.5rem] rounded-full flex flex-col items-center justify-center border-2 mb-8 shrink-0 relative"
                 style={{
-                  paddingTop: "clamp(2rem, 4vh, 3.5rem)",
-                  paddingBottom: "clamp(2rem, 4vh, 3.5rem)",
-                  display: "flex",
-                  gap: "2.5rem",
-                  alignItems: "flex-start",
+                  background: i === steps.length - 1 ? "var(--accent)" : "var(--background)",
+                  borderColor: i === steps.length - 1 ? "var(--accent)" : "var(--border-subtle)",
+                  zIndex: 10,
                 }}
               >
-                <AnimatedLine className="absolute top-0 left-0" />
+                {/* Accent dot on non-last steps */}
+                {i < steps.length - 1 && (
+                  <div
+                    className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
+                    style={{ background: "var(--accent)" }}
+                    aria-hidden="true"
+                  />
+                )}
                 <span
-                  style={{
-                    fontSize: "0.7rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.1em",
-                    color: "var(--text-muted)",
-                    fontVariantNumeric: "tabular-nums",
-                    flexShrink: 0,
-                    paddingTop: "0.5rem",
-                  }}
+                  className="text-xs font-black uppercase tracking-widest"
+                  style={{ color: i === steps.length - 1 ? "var(--bg)" : "var(--text-muted)", lineHeight: 1 }}
+                >
+                  Step
+                </span>
+                <span
+                  className="text-lg font-black font-poppins leading-none"
+                  style={{ color: i === steps.length - 1 ? "var(--bg)" : "var(--text-primary)" }}
                 >
                   {step.n}
                 </span>
-                <div>
-                  <h3
-                    style={{
-                      fontSize: "clamp(1.5rem, 2.8vw, 2.25rem)",
-                      fontWeight: 800,
-                      letterSpacing: "-0.025em",
-                      lineHeight: 1.1,
-                      color: "var(--text-primary)",
-                      marginBottom: "0.875rem",
-                    }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "1rem",
-                      lineHeight: 1.7,
-                      color: "var(--text-body)",
-                      maxWidth: "540px",
-                    }}
-                  >
-                    {step.body}
-                  </p>
-                </div>
               </div>
-            </AnimateOnScroll>
-          ))}
 
-          <AnimateOnScroll>
-            <div
-              style={{
-                paddingTop: "clamp(2.5rem, 5vh, 4rem)",
-              }}
-            >
-              <AnimatedLine className="mb-12" />
-              <Link href="/how-it-works" className="btn-ghost">
-                Explore the full 6-stage process →
-              </Link>
-            </div>
-          </AnimateOnScroll>
+              {/* Text */}
+              <h3
+                className="font-poppins text-lg font-bold mb-3"
+                style={{
+                  color: i === steps.length - 1 ? "var(--accent)" : "var(--text-primary)",
+                  lineHeight: 1.2,
+                }}
+              >
+                {step.title}
+              </h3>
+              <p className="text-sm text-muted leading-relaxed" style={{ maxWidth: "160px" }}>
+                {step.body}
+              </p>
+            </motion.div>
+          ))}
         </div>
+
       </div>
     </section>
   );

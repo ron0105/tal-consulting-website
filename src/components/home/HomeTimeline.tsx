@@ -1,61 +1,78 @@
 "use client";
 
 import { AnimateOnScroll } from "../shared/AnimateOnScroll";
-import { VelocityVisual } from "@/components/visuals";
 
-const rhythm = [
-  { day: "WEEK OPEN", task: "Problem Framing", sub: "We start with the question, not the answer. What is the real problem here?" },
-  { day: "MID WEEK", task: "Experiment Design", sub: "We build the smallest test that can give us a real answer." },
-  { day: "WEEK CLOSE", task: "Decision Gate", sub: "We look at what the evidence actually says. Build, pivot or kill." },
+const steps = [
+  {
+    n: "01",
+    title: "Understand your business",
+    body: "We start by listening — your team, your customers, your daily operations. No assumptions.",
+  },
+  {
+    n: "02",
+    title: "Find what's not working",
+    body: "We identify the specific gaps causing confusion, dropped leads, or things that depend too much on you.",
+  },
+  {
+    n: "03",
+    title: "Set simple systems",
+    body: "We create clear processes your team can actually follow — without needing you to explain everything.",
+  },
+  {
+    n: "04",
+    title: "Help your team use them",
+    body: "We stay involved until the systems are running on their own and your business feels easier to manage.",
+  },
 ];
 
 export default function HomeTimeline() {
   return (
-    <section className="padding-section bg-background border-t border-border-subtle">
+    <section className="padding-section bg-bg-secondary border-t border-border-subtle">
       <div className="layout-grid">
         <AnimateOnScroll>
-          <span className="label-eyebrow mb-12 block">Pace</span>
-          <h2 className="text-section-title mb-24">
-            The internal rhythm.
+          <span className="label-eyebrow mb-8 block">How we work</span>
+          <h2 className="text-section-title mb-16">
+            Simple steps.
+            <br />
+            <span className="text-muted">Real results.</span>
           </h2>
         </AnimateOnScroll>
 
-        {/* Timeline Layout with Visual Placeholder */}
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
-          <div className="relative flex-1">
-            {/* Vertical Line — Hidden on small screens if layout changes */}
-            <div className="absolute left-[7px] top-0 bottom-0 w-px bg-border-subtle hidden md:block" />
-            
-            <div className="flex flex-col gap-20">
-              {rhythm.map((item, i) => (
-                <AnimateOnScroll key={item.day} delay={i * 0.1}>
-                  <div className="relative md:pl-16 flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8">
-                    {/* Dot */}
-                    <div className="absolute left-0 top-3 w-4 h-4 bg-background border-4 border-text-primary rounded-full hidden md:block" />
-                    
-                    <span className="text-2xl md:text-3xl font-black tracking-tighter w-[180px] flex-shrink-0 italic">
-                      {item.day}
-                    </span>
-                    
-                    <div>
-                      <h3 className="text-2xl md:text-4xl font-black mb-3 uppercase tracking-tight">
-                        {item.task}
-                      </h3>
-                      <p className="body-copy !text-lg text-muted">
-                        {item.sub}
-                      </p>
-                    </div>
-                  </div>
-                </AnimateOnScroll>
-              ))}
-            </div>
-          </div>
+        <div className="relative">
+          <div
+            className="absolute hidden md:block"
+            style={{ left: "27px", top: 0, bottom: 0, width: "1px", background: "var(--border-subtle)" }}
+          />
 
-          <AnimateOnScroll delay={0.2} className="w-full lg:w-[400px] shrink-0 mt-12 lg:mt-0">
-            <div className="aspect-[3/4] bg-bg-secondary border border-border-subtle p-8 flex flex-col justify-center items-center text-center">
-              <VelocityVisual />
-            </div>
-          </AnimateOnScroll>
+          <div className="flex flex-col gap-10 md:gap-14">
+            {steps.map((step, i) => (
+              <AnimateOnScroll key={step.n} delay={i * 0.08}>
+                <div className="relative md:pl-20 flex items-start gap-5 md:gap-0">
+                  <div
+                    className="w-14 h-14 flex-shrink-0 hidden md:flex items-center justify-center text-sm font-black absolute left-0 top-0"
+                    style={{
+                      background: "var(--bg)",
+                      border: "1.5px solid var(--border-subtle)",
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    {step.n}
+                  </div>
+                  <span className="text-2xl font-black md:hidden flex-shrink-0" style={{ color: "var(--text-muted)", minWidth: "2.5rem" }}>
+                    {step.n}
+                  </span>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-black mb-2 tracking-tight" style={{ color: "var(--text-primary)" }}>
+                      {step.title}
+                    </h3>
+                    <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                      {step.body}
+                    </p>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
         </div>
       </div>
     </section>

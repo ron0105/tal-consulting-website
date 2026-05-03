@@ -15,7 +15,7 @@ const services = [
     n: "02",
     title: "Narrative",
     tagline: "Positioning & Messaging",
-    body: "We build your market story — positioning, messaging, and communication architecture. If people outside your team can't explain what you do and why it matters, you don't have a narrative yet.",
+    body: "We build your market story: positioning, messaging, and communication architecture. If people outside your team cannot explain what you do and why it matters, you do not have a narrative yet.",
     output: "Market Story + Comms Architecture",
   },
   {

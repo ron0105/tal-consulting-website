@@ -4,9 +4,9 @@ import WWUCallCTA from "@/components/work-with-us/WWUCallCTA";
 import WWUForm from "@/components/work-with-us/WWUForm";
 
 export const metadata: Metadata = {
-  title: "Work With Us",
+  title: "Contact",
   description:
-    "Choose your engagement model and tell us about your problem. Every submission is read personally and responded to within 48 hours.",
+    "Start a conversation with TAL Consulting. Tell us about your business or idea and we'll get back to you within 48 hours.",
 };
 
 export default function WorkWithUs() {

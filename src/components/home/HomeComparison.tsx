@@ -1,66 +1,61 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { AnimateOnScroll, StaggerContainer, staggerItem } from "../shared/AnimateOnScroll";
-
-const comparisons = [
-  { do: "Framework-first approach", skip: "Deliverables without structure" },
-  { do: "Drill-down at every stage", skip: "One-off advice with no follow-through" },
-  { do: "Share progress with the team", skip: "Black-box execution" },
-  { do: "Gamified KPIs", skip: "Vague success metrics" },
-  { do: "High-control engagement", skip: "Taking every client regardless of fit" },
-];
+import { AnimateOnScroll } from "../shared/AnimateOnScroll";
 
 export default function HomeComparison() {
   return (
-    <section className="padding-section bg-bg-secondary border-t border-border-subtle overflow-hidden">
-      <div className="layout-grid">
-        <AnimateOnScroll>
-          <span className="label-eyebrow mb-12 block">The Difference</span>
-          <h2 className="text-section-title mb-24">
-            What we do.
-            <br />
-            <span className="text-muted">What others skip.</span>
+    <section className="bg-bg-secondary py-24 md:py-32 border-y border-border-subtle">
+      <div className="layout-grid px-6 md:px-10">
+        <AnimateOnScroll className="mb-16">
+          <span className="label-eyebrow mb-6 block text-accent">What Changes</span>
+          <h2
+            className="font-poppins"
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.1,
+              color: "var(--text-primary)",
+            }}
+          >
+            The difference is in how things run.
           </h2>
         </AnimateOnScroll>
 
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
-          <div className="flex-1 w-full">
-            <StaggerContainer className="flex flex-col gap-px bg-border-subtle border border-border-subtle">
-              <div className="grid grid-cols-2 bg-bg-secondary">
-                <div className="p-6 label-eyebrow !text-text-primary">What We Do</div>
-                <div className="p-6 label-eyebrow !text-muted">What Others Skip</div>
-              </div>
-              {comparisons.map((item, i) => (
-                <motion.div
-                  variants={staggerItem}
-                  key={i}
-                  className="grid grid-cols-2 bg-background cursor-default"
-                  whileHover={{
-                    backgroundColor: "var(--bg-lift)",
-                    transition: { duration: 0.15, ease: "easeOut" },
-                  }}
-                >
-                  <div className="p-6 border-r border-border-subtle text-sm md:text-base font-bold text-text-primary pr-8">
-                    {item.do}
-                  </div>
-                  <div className="p-6 text-sm md:text-base text-muted pl-8 line-through decoration-muted/30">
-                    {item.skip}
-                  </div>
-                </motion.div>
+        <div className="grid md:grid-cols-2 gap-px bg-border-subtle border border-border-subtle rounded-2xl overflow-hidden">
+          <div className="bg-background p-10 md:p-16 flex flex-col h-full">
+            <span className="text-[10px] font-black uppercase tracking-widest mb-8 text-muted block">Where most businesses start</span>
+            <ul className="flex flex-col gap-6">
+              {[
+                "Owner is the decision point for most things",
+                "Roles and responsibilities are informal",
+                "Customer follow-ups depend on memory",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-4 text-lg font-medium text-muted">
+                  <span className="mt-1.5 w-4 h-px bg-border-subtle block shrink-0" style={{ background: "var(--border-subtle)" }} />
+                  {item}
+                </li>
               ))}
-            </StaggerContainer>
+            </ul>
           </div>
 
-          <AnimateOnScroll delay={0.2} className="w-full lg:w-[400px] shrink-0">
-            <div className="aspect-square overflow-hidden border border-border-subtle">
-              <img
-                src="/process-diagram.png"
-                alt="Structured vs chaotic growth diagram"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </AnimateOnScroll>
+          <div className="bg-background p-10 md:p-16 flex flex-col h-full">
+            <span className="text-[10px] font-black uppercase tracking-widest mb-8 text-accent block">After working with us</span>
+            <ul className="flex flex-col gap-6">
+              {[
+                "Team runs independently on clear systems",
+                "Every role has defined ownership",
+                "Customer pipeline is tracked and consistent",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-4 text-lg font-bold text-body">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-accent mt-1 flex-shrink-0">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

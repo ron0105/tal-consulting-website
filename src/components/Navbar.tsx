@@ -6,10 +6,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const navLinks = [
-  { label: "What We Do", href: "#what-we-do" },
-  { label: "Framework", href: "#framework" },
-  { label: "Models", href: "#engagement" },
-  { label: "Manifesto", href: "#manifesto" },
+  { label: "For Businesses", href: "/for-businesses" },
+  { label: "For New Ideas", href: "/for-new-ideas" },
+  { label: "How We Work", href: "/how-we-work" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -17,7 +18,7 @@ export default function Navbar() {
   const { scrollY } = useScroll();
 
   useEffect(() => {
-    const unsub = scrollY.on("change", (y) => setScrolled(y > 40));
+    const unsub = scrollY.on("change", (y) => setScrolled(y > 20));
     return unsub;
   }, [scrollY]);
 
@@ -26,51 +27,45 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: EASE }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-16"
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-20"
       style={{
-        backdropFilter: scrolled ? "blur(16px)" : "none",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
         background: scrolled
-          ? "rgba(13,13,13,0.85)"
+          ? "rgba(255, 255, 255, 0.85)"
           : "transparent",
         borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.06)"
+          ? "1px solid rgba(0, 0, 0, 0.05)"
           : "1px solid transparent",
         transition: "all 0.3s ease",
       }}
     >
       {/* Logo */}
-      <a href="#" className="flex items-center gap-2.5 group cursor-pointer">
+      <a href="/" className="flex items-center gap-2.5 group cursor-pointer">
         <div
-          className="w-6 h-6 flex items-center justify-center"
-          style={{ border: "1.5px solid #2563EB", borderRadius: "4px" }}
+          className="w-7 h-7 flex items-center justify-center"
+          style={{ border: "2px solid var(--accent)", borderRadius: "6px" }}
         >
           <div
-            className="w-2.5 h-2.5"
-            style={{ background: "#2563EB", borderRadius: "2px" }}
+            className="w-3 h-3"
+            style={{ background: "var(--accent)", borderRadius: "2px" }}
           />
         </div>
         <span
-          className="text-sm font-semibold tracking-tight"
-          style={{ color: "#F0F0F0" }}
+          className="text-lg font-bold tracking-tight font-poppins"
+          style={{ color: "var(--text-primary)" }}
         >
-          The Adda Labs
+          TAL Consulting
         </span>
       </a>
 
       {/* Nav links */}
-      <nav className="hidden md:flex items-center gap-7">
+      <nav className="hidden md:flex items-center gap-8">
         {navLinks.map((link) => (
           <a
             key={link.label}
             href={link.href}
-            className="text-xs font-medium tracking-wide transition-colors duration-200 cursor-pointer"
-            style={{ color: "#666", letterSpacing: "0.02em" }}
-            onMouseEnter={(e) =>
-              ((e.target as HTMLElement).style.color = "#F0F0F0")
-            }
-            onMouseLeave={(e) =>
-              ((e.target as HTMLElement).style.color = "#666")
-            }
+            className="text-sm font-medium transition-colors duration-200 cursor-pointer hover:text-accent"
+            style={{ color: "var(--text-muted)", letterSpacing: "-0.01em" }}
           >
             {link.label}
           </a>
@@ -79,22 +74,14 @@ export default function Navbar() {
 
       {/* CTA */}
       <a
-        href="#contact"
-        className="hidden md:flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wide cursor-pointer transition-all duration-200"
+        href="/contact"
+        className="btn-primary hidden md:flex"
         style={{
-          background: "#2563EB",
-          color: "#fff",
-          borderRadius: "6px",
-          letterSpacing: "0.02em",
+          padding: "10px 20px",
+          fontSize: "0.875rem",
         }}
-        onMouseEnter={(e) =>
-          ((e.currentTarget as HTMLElement).style.background = "#3B82F6")
-        }
-        onMouseLeave={(e) =>
-          ((e.currentTarget as HTMLElement).style.background = "#2563EB")
-        }
       >
-        Start the conversation
+        👉 Start Conversation
       </a>
     </motion.header>
   );

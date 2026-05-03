@@ -5,21 +5,21 @@ import { AnimateOnScroll } from "../shared/AnimateOnScroll";
 
 const offerings = [
   {
-    title: "VALIDATION SPRINT",
+    title: "VALIDATION MODULE",
     duration: "4–6 weeks",
-    output: "Build / Pivot / Kill decision",
+    output: "Build / Pivot / Stop decision",
     price: "₹2.5L – ₹5L",
     desc: "A rigorous stress-test of your core business assumptions using real-world customer data and demand signals.",
   },
   {
     title: "PILOT BLUEPRINT",
-    duration: "Experiment design",
-    output: "Clinical system map",
+    duration: "2-3 weeks",
+    output: "Execution system map",
     price: "₹75K – ₹1.5L",
     desc: "We design the architecture of your validation experiments: from user acquisition flows to conversion metrics.",
   },
   {
-    title: "VALIDATION RETAINER",
+    title: "STRATEGIC RETAINER",
     duration: "Monthly support",
     output: "Ongoing risk mitigation",
     price: "₹60K – ₹1.2L / mo",
@@ -28,7 +28,7 @@ const offerings = [
   {
     title: "VENTURE CO-BUILD",
     duration: "3–6 months",
-    output: "Equity + Growth systems",
+    output: "Growth systems & Equity",
     price: "Mixed Model",
     desc: "Strategic partnership where we build the infrastructure for highly validated, high-conviction ventures.",
   },
@@ -36,55 +36,57 @@ const offerings = [
 
 export default function HomeOfferingsGrid() {
   return (
-    <section className="padding-section bg-bg-secondary border-t border-border-subtle">
-      <div className="layout-grid">
-        <AnimateOnScroll>
-          <span className="label-eyebrow mb-12 block">Service Modules</span>
-          <h2 className="text-section-title mb-24">
+    <section className="py-24 md:py-32 bg-bg-secondary border-t border-border-subtle overflow-hidden">
+      <div className="layout-grid px-6 md:px-10">
+        <AnimateOnScroll className="mb-20">
+          <span className="label-eyebrow mb-6 block text-accent">Engagement Models</span>
+          <h2
+            className="font-poppins"
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              fontWeight: 700,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.1,
+              color: "var(--text-primary)",
+            }}
+          >
             Structured engagement.
             <br />
             <span className="text-muted">No black boxes.</span>
           </h2>
         </AnimateOnScroll>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-8">
           {offerings.map((item, i) => (
             <AnimateOnScroll key={item.title} delay={i * 0.08}>
               <motion.div
-                className="p-10 border border-border-subtle bg-background flex flex-col justify-between min-h-[400px] cursor-default"
+                className="p-10 md:p-12 border border-border-subtle bg-background flex flex-col justify-between min-h-[420px] rounded-2xl transition-all hover:border-accent"
                 whileHover={{
                   y: -4,
-                  borderColor: "var(--text-primary)",
-                  boxShadow: "0 8px 32px -8px rgba(0,0,0,0.12)",
-                  transition: { duration: 0.22, ease: "easeOut" },
+                  boxShadow: "0 20px 40px -20px rgba(0,0,0,0.1)",
                 }}
-                style={{ willChange: "transform" }}
               >
                 <div>
                   <div className="flex justify-between items-start mb-10">
-                    <span className="label-eyebrow !text-text-primary bg-bg-lift px-3 py-1">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-muted bg-bg-lift px-3 py-1 rounded">
                       {item.duration}
                     </span>
-                    <motion.span
-                      className="text-xl font-black tracking-tight"
-                      initial={{ opacity: 0.7 }}
-                      whileHover={{ opacity: 1 }}
-                    >
+                    <span className="text-xl font-bold tracking-tight text-primary">
                       {item.price}
-                    </motion.span>
+                    </span>
                   </div>
 
-                  <h3 className="text-2xl font-black mb-4 tracking-tighter uppercase italic">
+                  <h3 className="text-2xl font-bold font-poppins mb-4 tracking-tight uppercase italic text-primary">
                     {item.title}
                   </h3>
-                  <p className="body-copy !text-base text-muted mb-8 max-w-[400px]">
+                  <p className="text-lg text-muted mb-8 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
 
                 <div className="pt-8 border-t border-border-subtle">
-                  <p className="text-xs font-bold uppercase tracking-widest text-muted mb-2">Primary Output:</p>
-                  <p className="text-base font-bold uppercase">{item.output}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted mb-2">Primary Output:</p>
+                  <p className="text-lg font-bold text-primary uppercase tracking-tight">{item.output}</p>
                 </div>
               </motion.div>
             </AnimateOnScroll>
