@@ -8,23 +8,23 @@ const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const steps = [
   {
     n: "01",
-    title: "Understand your situation",
-    body: "We spend time with you, your team, and your goals. Nothing is assumed. Everything is heard.",
+    title: "We listen",
+    body: "We spend time with you, your team, and your numbers. Nothing assumed.",
   },
   {
     n: "02",
-    title: "Map what needs to change",
-    body: "We identify exactly what to build, strengthen, or simplify, and in what order.",
+    title: "We map",
+    body: "We identify what to build, fix, or strengthen, and in what order.",
   },
   {
     n: "03",
-    title: "Build the right systems",
-    body: "Clear, practical processes your team can follow. No complexity. Just what works.",
+    title: "We build",
+    body: "Clear systems and strategies your team can own and run.",
   },
   {
     n: "04",
-    title: "Embed them with your team",
-    body: "We stay involved until the systems are running well and your team feels confident.",
+    title: "You grow",
+    body: "More revenue, better margins, a business that runs without you in every detail.",
   },
 ];
 

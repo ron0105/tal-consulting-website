@@ -8,7 +8,7 @@ const stages = [
   { n: "Stage 02", title: "Assumption Mapping", desc: "Turn ideas into testable statements." },
   { n: "Stage 03", title: "Research and Validation", desc: "Find who pays to solve this." },
   { n: "Stage 04", title: "Business Model Structuring", desc: "Work out how the business actually makes money." },
-  { n: "Stage 05", title: "Frugal Pilot", desc: "Run the smallest test that gets you a real answer." },
+  { n: "Stage 05", title: "Small Test", desc: "Run the smallest test that gets you a real answer." },
   { n: "Stage 06", title: "Decision Gate", desc: "Build, pivot, or kill based on the evidence." },
 ];
 

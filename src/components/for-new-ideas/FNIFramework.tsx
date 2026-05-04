@@ -26,7 +26,7 @@ const stages = [
   },
   {
     n: "Stage 05",
-    title: "Frugal Pilot",
+    title: "Small Test",
     desc: "Run the smallest test that gets you a real answer.",
   },
   {

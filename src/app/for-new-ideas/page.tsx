@@ -8,7 +8,7 @@ import FNIDifferentiation from "@/components/for-new-ideas/FNIDifferentiation";
 import FNICTA from "@/components/for-new-ideas/FNICTA";
 
 export const metadata: Metadata = {
-  title: "For New Ideas | Venture Lab",
+  title: "For New Ideas",
   description:
     "We help founders test, validate, and structure business ideas before investing time and money. Our 6-step framework brings structure before execution.",
 };

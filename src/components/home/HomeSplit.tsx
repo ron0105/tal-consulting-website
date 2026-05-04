@@ -68,7 +68,7 @@ export default function HomeSplit() {
           items={[
             "Test if the market is real",
             "Get clarity before you commit",
-            "Build on validated ground",
+            "Know what to build before you spend a rupee",
           ]}
           itemAccent={false}
           cta="Explore idea validation"

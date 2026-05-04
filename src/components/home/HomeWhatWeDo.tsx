@@ -38,7 +38,7 @@ export default function HomeWhatWeDo() {
               color: "var(--text-primary)",
             }}
           >
-            Two services. One way of thinking.
+            What we actually do.
           </h2>
           <p className="text-lg text-muted mb-8 max-w-2xl">
             Two services, built around the same discipline. Here is what each one looks like.
@@ -118,7 +118,7 @@ export default function HomeWhatWeDo() {
                 <div>
                   <p className="label-eyebrow mb-6">The 6 stages</p>
                   <ol className="flex flex-col gap-3">
-                    {["Problem Framing", "Assumption Mapping", "Research and Validation", "Business Model Structuring", "Frugal Pilot", "Decision Gate"].map((stage, i) => (
+                    {["Problem Framing", "Assumption Mapping", "Research and Validation", "Business Model Structuring", "Small Test", "Decision Gate"].map((stage, i) => (
                       <li key={stage} className="flex items-center gap-3 text-sm font-medium text-body">
                         <span className="text-muted text-xs font-bold w-6 shrink-0">0{i + 1}</span>
                         {stage}
