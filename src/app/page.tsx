@@ -1,6 +1,7 @@
 import HomeHero from "@/components/home/HomeHero";
 import HomeSplit from "@/components/home/HomeSplit";
 import HomeProblem from "@/components/home/HomeProblem";
+import HomeWhy from "@/components/home/HomeWhy";
 import HomeWhatWeDo from "@/components/home/HomeWhatWeDo";
 import HomeProcess from "@/components/home/HomeProcess";
 import HomeComparison from "@/components/home/HomeComparison";
@@ -13,6 +14,7 @@ export default function Home() {
       <HomeHero />
       <HomeSplit />
       <HomeProblem />
+      <HomeWhy />
       <HomeWhatWeDo />
       <HomeProcess />
       <HomeComparison />
