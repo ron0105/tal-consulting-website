@@ -13,129 +13,132 @@ function TwoPathsDiagram() {
       initial={{ opacity: 0, x: 24 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1, ease, delay: 0.3 }}
-      className="relative w-full"
+      className="relative w-full mx-auto"
+      style={{ maxWidth: "480px" }}
     >
       <motion.div
-        animate={{ y: [0, -8, 0] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <svg viewBox="0 0 860 340" className="w-full h-auto" aria-hidden="true">
+        <svg viewBox="0 0 480 420" className="w-full h-auto" aria-hidden="true">
 
-          {/* Path A — For Businesses (top) */}
+          {/* Ghost background number */}
+          <text x="240" y="230" textAnchor="middle" dominantBaseline="middle"
+            fontFamily="Poppins, sans-serif" fontWeight="900" fontSize="220"
+            style={{ fill: "var(--text-primary)", opacity: 0.022 }}>
+            2
+          </text>
+
+          {/* Path A — top track */}
           <motion.path
-            d="M 140 80 C 280 80, 380 170, 430 170"
+            d="M 60 100 C 140 100, 200 200, 240 220"
             style={{ fill: "none", stroke: "var(--accent)" }}
-            strokeWidth="3"
-            strokeLinecap="round"
+            strokeWidth="2" strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.0, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           />
-          {/* Path B — For New Ideas (bottom) */}
+          {/* Path B — bottom track */}
           <motion.path
-            d="M 140 260 C 280 260, 380 170, 430 170"
+            d="M 60 320 C 140 320, 200 240, 240 220"
             style={{ fill: "none", stroke: "var(--border-color)" }}
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="10 7"
+            strokeWidth="2" strokeLinecap="round" strokeDasharray="7 5"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 0.8 }}
-            transition={{ duration: 1.0, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.0, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
           />
-          {/* Output path */}
+          {/* Continuation */}
           <motion.path
-            d="M 430 170 C 530 170, 680 170, 740 170"
+            d="M 240 220 C 300 220, 380 220, 430 220"
             style={{ fill: "none", stroke: "var(--accent)" }}
-            strokeWidth="3.5"
-            strokeLinecap="round"
+            strokeWidth="2.5" strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.55, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.8, delay: 1.65, ease: [0.22, 1, 0.36, 1] }}
           />
 
           {/* Label A — For Businesses */}
-          <motion.g initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
-            <rect x="0" y="52" width="138" height="56" rx="12"
+          <motion.g initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.55 }}>
+            <rect x="0" y="68" width="58" height="64" rx="10"
               style={{ fill: "var(--bg-secondary)", stroke: "var(--accent)" }}
-              strokeWidth="2"
+              strokeWidth="1.5"
             />
-            <text x="69" y="76" textAnchor="middle" dominantBaseline="middle"
-              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="13"
+            <text x="29" y="90" textAnchor="middle" dominantBaseline="middle"
+              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="11"
               style={{ fill: "var(--accent)" }}>
-              For Businesses
+              FOR
             </text>
-            <text x="69" y="96" textAnchor="middle" dominantBaseline="middle"
-              fontFamily="Poppins, sans-serif" fontWeight="500" fontSize="11"
-              style={{ fill: "var(--text-muted)" }}>
-              3-phase process
+            <text x="29" y="108" textAnchor="middle" dominantBaseline="middle"
+              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="11"
+              style={{ fill: "var(--accent)" }}>
+              BIZ
             </text>
           </motion.g>
 
           {/* Label B — For New Ideas */}
-          <motion.g initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.55 }}>
-            <rect x="0" y="232" width="138" height="56" rx="12"
+          <motion.g initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.7 }}>
+            <rect x="0" y="288" width="58" height="64" rx="10"
               style={{ fill: "var(--bg-secondary)", stroke: "var(--border-color)" }}
-              strokeWidth="2"
+              strokeWidth="1.5"
             />
-            <text x="69" y="256" textAnchor="middle" dominantBaseline="middle"
-              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="13"
+            <text x="29" y="310" textAnchor="middle" dominantBaseline="middle"
+              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="11"
               style={{ fill: "var(--text-muted)" }}>
-              For New Ideas
+              NEW
             </text>
-            <text x="69" y="276" textAnchor="middle" dominantBaseline="middle"
-              fontFamily="Poppins, sans-serif" fontWeight="500" fontSize="11"
+            <text x="29" y="328" textAnchor="middle" dominantBaseline="middle"
+              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="11"
               style={{ fill: "var(--text-muted)" }}>
-              6-stage framework
+              IDEAS
             </text>
           </motion.g>
 
           {/* Merge dot */}
-          <motion.circle cx={430} cy={170} r={14}
+          <motion.circle cx={240} cy={220} r={10}
             style={{ fill: "var(--accent)" }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 1.5, ease }}
+            transition={{ duration: 0.4, delay: 1.6, ease }}
           />
-          <motion.circle cx={430} cy={170} r={6}
+          <motion.circle cx={240} cy={220} r={4}
             style={{ fill: "var(--bg)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.3, delay: 1.65 }}
+            transition={{ duration: 0.3, delay: 1.75 }}
           />
-          <motion.circle cx={430} cy={170} r={14}
+          <motion.circle cx={240} cy={220} r={10}
             style={{ fill: "none", stroke: "var(--accent)" }}
-            strokeWidth="2"
-            animate={{ r: [14, 32, 14], opacity: [0.4, 0, 0.4] }}
+            strokeWidth="1.5"
+            animate={{ r: [10, 24, 10], opacity: [0.5, 0, 0.5] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           />
 
-          {/* Mid label */}
-          <motion.text x="430" y="210"
-            textAnchor="middle"
+          {/* End — Clarity */}
+          <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.5 }}>
+            <rect x="398" y="196" width="82" height="48" rx="10"
+              style={{ fill: "var(--accent)" }}
+            />
+            <text x="439" y="216" textAnchor="middle" dominantBaseline="middle"
+              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="13"
+              style={{ fill: "var(--bg)" }}>
+              Clarity
+            </text>
+            <text x="439" y="234" textAnchor="middle" dominantBaseline="middle"
+              fontFamily="Poppins, sans-serif" fontWeight="600" fontSize="10"
+              style={{ fill: "var(--bg)", opacity: 0.75 }}>
+              + direction
+            </text>
+          </motion.g>
+
+          {/* One-way thinking label */}
+          <motion.text x="240" y="260" textAnchor="middle"
             fontFamily="Poppins, sans-serif" fontWeight="700" fontSize="12"
             style={{ fill: "var(--text-muted)" }}
             initial={{ opacity: 0 }} animate={{ opacity: 0.7 }}
             transition={{ delay: 1.8 }}
           >
-            Same thinking. Same discipline.
+            One way of thinking
           </motion.text>
-
-          {/* Clarity endpoint */}
-          <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.3 }}>
-            <rect x="740" y="138" width="120" height="64" rx="14"
-              style={{ fill: "var(--accent)" }}
-            />
-            <text x="800" y="163" textAnchor="middle" dominantBaseline="middle"
-              fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="15"
-              style={{ fill: "var(--bg)" }}>
-              Clarity
-            </text>
-            <text x="800" y="183" textAnchor="middle" dominantBaseline="middle"
-              fontFamily="Poppins, sans-serif" fontWeight="600" fontSize="11"
-              style={{ fill: "var(--bg)", opacity: 0.7 }}>
-              + direction
-            </text>
-          </motion.g>
 
         </svg>
       </motion.div>
@@ -188,66 +191,62 @@ export default function HWWHero() {
       <div className="absolute top-28 right-14 w-px h-28 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, var(--border-subtle), transparent)", opacity: 0.4 }} aria-hidden="true" />
 
       <motion.div style={{ y: textY }} className="layout-grid px-6 md:px-10 relative z-10">
+        <div className="grid lg:grid-cols-[1fr_0.9fr] gap-16 items-center">
 
-        {/* Copy — full width, centered */}
-        <div className="max-w-3xl mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="flex items-center gap-4 mb-10"
-          >
-            <div className="w-6 h-px" style={{ background: "var(--accent)" }} />
-            <span className="label-eyebrow text-accent">How We Work</span>
-          </motion.div>
+          {/* Left — copy */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease }}
+              className="flex items-center gap-4 mb-10"
+            >
+              <div className="w-6 h-px" style={{ background: "var(--accent)" }} />
+              <span className="label-eyebrow text-accent">How We Work</span>
+            </motion.div>
 
-          <LineReveal
-            lines={["Two paths.", "One way of", "thinking."]}
-            delay={0.1}
-            stagger={0.12}
-            className="font-poppins mb-10"
-            as="h1"
-          />
+            <LineReveal
+              lines={["Two paths.", "One way of", "thinking."]}
+              delay={0.1}
+              stagger={0.12}
+              className="font-poppins mb-10"
+              as="h1"
+            />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.55 }}
-          >
-            <p className="text-xl leading-relaxed font-medium text-body mb-8" style={{ maxWidth: "560px" }}>
-              Whether you run a business or are testing a new idea, the thinking behind our work is the same: understand first, structure clearly, validate before acting.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease, delay: 0.55 }}
+            >
+              <p className="text-xl leading-relaxed font-medium text-body mb-8" style={{ maxWidth: "480px" }}>
+                Whether you run a business or are testing a new idea, the thinking behind our work is the same: understand first, structure clearly, validate before acting.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="#for-businesses"
-                className="flex items-center gap-3 px-5 py-3 border border-border-subtle rounded-lg text-sm font-semibold text-body hover:border-accent hover:text-accent transition-colors"
-              >
-                <div className="w-2 h-2 rounded-sm shrink-0" style={{ background: "var(--accent)" }} />
-                For Businesses: 3-phase process
-              </a>
-              <a
-                href="#for-new-ideas"
-                className="flex items-center gap-3 px-5 py-3 border border-border-subtle rounded-lg text-sm font-semibold text-body hover:border-accent hover:text-accent transition-colors"
-              >
-                <div className="w-2 h-2 rounded-sm shrink-0" style={{ background: "var(--border-color)" }} />
-                For New Ideas: 6-stage framework
-              </a>
-            </div>
-          </motion.div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="#for-businesses"
+                  className="flex items-center gap-3 px-5 py-3 border border-border-subtle rounded-lg text-sm font-semibold text-body hover:border-accent hover:text-accent transition-colors"
+                >
+                  <div className="w-2 h-2 rounded-sm shrink-0" style={{ background: "var(--accent)" }} />
+                  For Businesses: 3-phase process
+                </a>
+                <a
+                  href="#for-new-ideas"
+                  className="flex items-center gap-3 px-5 py-3 border border-border-subtle rounded-lg text-sm font-semibold text-body hover:border-accent hover:text-accent transition-colors"
+                >
+                  <div className="w-2 h-2 rounded-sm shrink-0" style={{ background: "var(--border-color)" }} />
+                  For New Ideas: 6-stage framework
+                </a>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right — diagram */}
+          <div className="hidden lg:block">
+            <TwoPathsDiagram />
+          </div>
+
         </div>
-
-        {/* Diagram — full width, large */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease, delay: 0.6 }}
-          className="w-full"
-          style={{ maxWidth: "860px" }}
-        >
-          <TwoPathsDiagram />
-        </motion.div>
-
       </motion.div>
     </section>
   );
