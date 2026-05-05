@@ -1,24 +1,27 @@
 import HomeHero from "@/components/home/HomeHero";
-import HomeSplit from "@/components/home/HomeSplit";
 import HomeProblem from "@/components/home/HomeProblem";
+import HomeComparison from "@/components/home/HomeComparison";
 import HomeWhy from "@/components/home/HomeWhy";
 import HomeWhatWeDo from "@/components/home/HomeWhatWeDo";
 import HomeProcess from "@/components/home/HomeProcess";
-import HomeComparison from "@/components/home/HomeComparison";
-import HomeWhoThisIsFor from "@/components/home/HomeWhoThisIsFor";
 import HomeCTA from "@/components/home/HomeCTA";
+
+// Homepage answers the 5 questions in order:
+// 1. What do you do?       → HomeHero
+// 2. Who is it for?        → HomeProblem
+// 3. Why should I care?    → HomeComparison
+// 4. Why should I trust you? → HomeWhy
+// 5. What do I do next?   → HomeCTA
 
 export default function Home() {
   return (
     <main>
       <HomeHero />
-      <HomeSplit />
       <HomeProblem />
+      <HomeComparison />
       <HomeWhy />
       <HomeWhatWeDo />
       <HomeProcess />
-      <HomeComparison />
-      <HomeWhoThisIsFor />
       <HomeCTA />
     </main>
   );

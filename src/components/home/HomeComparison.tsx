@@ -7,7 +7,7 @@ export default function HomeComparison() {
     <section className="bg-bg-secondary py-24 md:py-32 border-y border-border-subtle">
       <div className="layout-grid px-6 md:px-10">
         <AnimateOnScroll className="mb-16">
-          <span className="label-eyebrow mb-6 block text-accent">What Changes</span>
+          <span className="label-eyebrow mb-6 block text-accent">Why it matters</span>
           <h2
             className="font-poppins"
             style={{
